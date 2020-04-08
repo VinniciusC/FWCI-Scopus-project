@@ -17,7 +17,7 @@ options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
 scopus_id = ''
-ordered_by =
+sorted_by =
 #1 - All articles
 #2 - Date(Newest)
 #3 - Date(Oldest)
@@ -25,7 +25,7 @@ ordered_by =
 #5 - Cited by(Lowest)
 min_year =  #0 to ignore
 max_year =  #0 to ignore
-size = #max 200, just for ordered_by != 1
+size = #max 200, for sorted_by == 1 fill with 0
 
 cdriver = webdriver.Chrome(options=options, executable_path=r"") #needs to specify the webdriver path
 
@@ -47,18 +47,18 @@ if not os.path.exists(author):
 
 box = WebDriverWait(cdriver,3).until(EC.presence_of_element_located((By.ID,'resultDataRow0')))
 
-if ordered_by != 1:
+if sorted_by != 1:
                 cdriver.find_elements_by_class_name('ui-selectmenu-text')[0].click()
                 #selecting article's classification
-                if ordered_by ==3:
+                if sorted_by ==3:
                     cdriver.find_element_by_id('ui-id-2').click()
                     time.sleep(2)
 
-                elif ordered_by == 4:
+                elif sorted_by == 4:
                     cdriver.find_element_by_id('ui-id-3').click()
                     time.sleep(2)
 
-                elif ordered_by == 5:
+                elif sorted_by == 5:
                     cdriver.find_element_by_id('ui-id-4').click()
                     time.sleep(2)
 
@@ -160,6 +160,8 @@ else: #To harvest data of all articles
                     break
 
 #Writing in csv
-c = csv.writer(io.open(author+"\\" + scopus_id +"_"+ str(ordered_by) +"_"+ str(size) +"_"+ str(min_year) +"_"+ str(max_year)+".csv", "w", encoding="utf-8",newline=''))
+c = csv.writer(io.open(author+"\\" + scopus_id +"_"+ str(sorted_by) +"_"+ str(size) +"_"+ str(min_year) +"_"+ str(max_year)+".csv", "w", encoding="utf-8",newline=''))
 c.writerow(["Article_name", "FWCI", "year" ,"authors_count","Prominence percentile","Topics","Anchors"])
 c.writerows(articles)
+
+print("CSV file written with success")
