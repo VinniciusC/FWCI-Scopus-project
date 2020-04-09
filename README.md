@@ -153,7 +153,7 @@ To use the functions, you need to edit the file calling them with the parameters
       ```
       top_fwci = twenty_highest_att(df,'FWCI')
       ```
-      This function is not inplace, returns a new dataset without change the original.\
+      This function is not inplace, returns a new dataset without change the original.
       
    * Scatter graphic Co-authors count X FWCI\
        Function: scatter_coauthorsxfwci\
