@@ -5,7 +5,7 @@ Repository containing the tools used in the article
 Optimized harvesting and usage of FWCI and TPP. Article age- and field-normalized tools to evaluate scientific impact\
 Edgar D. Zanotto and Vinicius Carvalho\
 Department of Materials Engineering - DEMa\
-Federal University of São Carlos - UFSCar\
+Federal University of São Carlos - UFSCar
 
 
 ## Requirements
