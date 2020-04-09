@@ -57,7 +57,7 @@ def plot2(df1, df2, title, legend1, legend2, x, y, attr):
     plt.legend()
     if not os.path.exists(title):
                 os.makedirs(title)
-    plt.savefig(title + ".png", format='png')
+    plt.savefig(title + "/" + title + ".png", format='png')
     plt.show()
 
 def divide_coauthors(df,attr):
@@ -71,7 +71,7 @@ def statistics_coauthors(df):
     print("Co-author mode per article: " + str(s.mode(df['authors_count'])))
     print("Co-author median per article: " + str(statistics.median(df['authors_count'])))
 
-def attribute_statistics(df, attr):
+def statistics_attribute(df, attr):
     print(attr + " sum:"+ str(sum(df[attr])))
     print(attr + " mean: " + str(round(statistics.mean(df[attr]),2)))
     print(attr + " mode: " + str(s.mode(df[attr])))
