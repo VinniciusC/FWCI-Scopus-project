@@ -27,7 +27,7 @@ min_year =  #0 to ignore
 max_year =  #0 to ignore
 size = #max 200, for sorted_by == 1 fill with 0
 
-cdriver = webdriver.Chrome(options=options, executable_path=r"") #needs to specify the webdriver path
+cdriver = webdriver.Chrome(options=options, executable_path=r"chromedriver") #needs to specify the webdriver path
 
 cdriver.get('https://www.scopus.com/authid/detail.uri?authorId='+scopus_id)
 
