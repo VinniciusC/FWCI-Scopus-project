@@ -36,7 +36,7 @@ try:
             janela = WebDriverWait(cdriver,5).until(EC.presence_of_element_located((By.ID, '_pendo-close-guide_')))
             cdriver.find_element_by_id('_pendo-close-guide_').click()
 except:
-            print('aaaa')
+            print('Please run again')
 finally:
             articles = []
             author = cdriver.find_element_by_class_name('wordBreakWord').get_attribute("innerText")
