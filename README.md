@@ -21,7 +21,9 @@ Federal University of São Carlos - UFSCar
 ## Collecting the data
 Selenium-code.py is the script responsible to collect the data at Scopus.
 
-To get started, it is necessary define some settings filling the variables in the code.
+To get started, it is necessary download chrome webdriver according with your google chrome version and save at scripts folder.\
+Download here: https://chromedriver.chromium.org/downloads \
+Then, define some settings filling the variables in the code.
 
  * scopus_ID\
       Author's ID that can be found in author's page at Scopus\
