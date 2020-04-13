@@ -51,7 +51,7 @@ To get started, it is necessary define some settings filling the variables in th
       ```
    * Size\
       Number of articles to be collected.
-      If you choose all articles in sorted_by, fill with 0 and the other options the maximum value is 200.
+      If you choose all articles in sorted_by, fill with 0 and to the other options the maximum value is 200.
       To collect 50 articles: 
       ```
       size = 50
@@ -72,7 +72,7 @@ Observation: sometimes it is necessary to re-execute the code again because of r
 
 ## Generating graphics and statistics
 Using the script graphics-and-statistics.py we can generate graphics and statistics about the previouly collected data.
-The graphic represents a count of articles in a specified interval of a chosen attribute. In the following case, the interval is 0.1 and the attribute is Normalized FWCI.
+The graphic represents a count of articles in an interval which is defined by the user. In the following case, the interval is 0.1 and the attribute is Normalized FWCI.
 ![1](https://user-images.githubusercontent.com/32166287/78833422-3bf95100-79c3-11ea-9730-ab497e3aac2d.png)
 
 Before using the functions, it is necessary specify the csv path with the data. To this, use the variables file and file2, in case of a second dataset.
@@ -93,7 +93,7 @@ To use the functions, you need to edit the file calling them with the parameters
   * df : The desired dataset. Use df for file and df2 for file2
   * title: The title that will be written on the top of the graphic and the name of the file.
   * y: Name of Y axis
-  * attr: Choosen attribute to plot, that could be FWCI, authors_count and Prominence percentile\
+  * attr: Choosen attribute to plot, that could be FWCI, authors_count and Prominence percentile
   
       Example:
      ```
