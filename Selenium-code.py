@@ -25,10 +25,10 @@ sorted_by =
 #5 - Cited by(Lowest)
 min_year =  #0 to ignore
 max_year =  #0 to ignore
-size = #max 200, for sorted_by == 1 fill with 0
+size =  #max 200, for sorted_by == 1 or to get the maximum, fill with 0
 
 cdriver = webdriver.Chrome(options=options, executable_path=r"chromedriver") #needs to specify the webdriver path
-
+	cdriver.implicitly_wait(10)
 cdriver.get('https://www.scopus.com/authid/detail.uri?authorId='+scopus_id)
 
 #To close a popup window in authors page
@@ -84,7 +84,7 @@ if sorted_by != 1:
                                 links.append(pages[i].get_attribute("href"))
                 count = 0
                 for link in links:
-                    if (count==size):
+                    if (count==size and size != 0)::
                         break
                     cdriver.get(link)
 
