@@ -5,7 +5,10 @@ Repository containing the tools used in the article
 Optimized harvesting and usage of FWCI and TPP. Article age- and field-normalized tools to evaluate scientific impact\
 Edgar D. Zanotto and Vinicius Carvalho\
 Department of Materials Engineering - DEMa\
-Federal University of São Carlos - UFSCar
+Center for Research, Technology and Education in Vitreous Materials\
+Federal University of São Carlos - UFSCar\
+Sao Carlos, SP, Brazil\
+(dedz@ufscar.br)\
 
 
 ## Requirements
@@ -15,11 +18,12 @@ Federal University of São Carlos - UFSCar
 * Numpy
 * Matplotlib
 * Scipy
-* Full acess at Scopus database
+* Full access to the Scopus database
 
 
 ## Collecting the data
-Selenium-code.py is the script responsible to collect the data at Scopus.
+Selenium-code.py is the script responsible to collect data* at Scopus.
+*data = FWCI, TPP, publication year and number of authors of each article
 
 To get started, it is necessary download chrome webdriver according with your google chrome version and save at scripts folder.\
 Download here: https://chromedriver.chromium.org/downloads \
@@ -63,31 +67,31 @@ After filling all the variables, it is just necessary run the script:
 python Selenium-code.py
 ```
 The browser will open and run all the process automatically. \
-At the end, the collected data will be written in a CSV file with the following columns and attributes:
+In the end, the collected data will be written in a CSV file with the following columns and attributes:
 | Article_name | FWCI | year | authors_count | Prominence percentile | Topics | Anchors |
 |--------------|------|------|---------------|-----------------------|--------|---------|
 
-The file will be saved in author's folder and the name defined by the previously filled variables\
+The file will be saved in the author folder and the name defined by the previously filled variables\
 scopus_id_sorted_by_size_min_year_max_year.csv\
-After writting, a message of sucess will be shown.\
-Observation: sometimes it is necessary to re-execute the code again because of random popups and attributes that were not loaded correctly by the website. We are working in a solution, feel free to contribute.
+After writing the csv, a message of success will be shown.\
+Observation: sometimes it is necessary to re-execute the code again because of random popups and attributes that have not been loaded correctly by the website. We are working in a solution, feel free to contribute.
 
 ## Generating graphics and statistics
-Using the script graphics-and-statistics.py we can generate graphics and statistics about the previouly collected data.
-The graphic represents a count of articles in an interval which is defined by the user. In the following case, the interval is 0.1 and the attribute is Normalized FWCI.
+Using the script graphics-and-statistics.py we can generate graphics and statistics about the previously collected data.
+The graphic represents the number of articles in an interval which is defined by the user. In the following case, the interval is 0.1 and the attribute is Normalized FWCI.
 ![1](https://user-images.githubusercontent.com/32166287/78833422-3bf95100-79c3-11ea-9730-ab497e3aac2d.png)
 
-Before using the functions, it is necessary specify the csv path with the data. To this, use the variables file and file2, in case of a second dataset.
+Before using the functions, it is necessary specify the csv path with the data. Using the variables file and file2, if there is a second dataset.
 Example:
 ```
 file = '/home/user/FWCI-Scopus-project/author1/123456_1_0_2000_0.csv'
 ```
-Then, you need to define a interval according with your preferences or data scale. The variable is count_interval, localized in the first lines.\
+Then, you need to define an interval according with your preferences or data scale. The variable is count_interval, localized in the first lines.\
 Defining a 0.5 interval:
 ```
 count_interval = 0.5
 ```
-To use the functions, you need to edit the file calling them with the parameters.
+To use the functions, you will need to edit the file running them with the parameters.
 
 * Graphic with one dataset\
       Function: plot\
@@ -101,9 +105,9 @@ To use the functions, you need to edit the file calling them with the parameters
      ```
      plot(df,'Articles count X FWCI', 'Normalized FWCI','FWCI')
      ```
-       The png plot will be saved in a folder named by the title inside the dataset csv folder.\
+       The png plot is saved in a folder named by the title inside the dataset csv folder.\
            ![1](https://user-images.githubusercontent.com/32166287/78833422-3bf95100-79c3-11ea-9730-ab497e3aac2d.png)\
- * Graphic with two dataset\
+ * Graphic with two datasets\
       Function: plot2\
       plot2(df1, df2, title, legend1, legend2, y, attr)
    * df1 : The desired dataset. Use df for file and df2 for file2
