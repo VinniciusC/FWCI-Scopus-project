@@ -2,11 +2,11 @@
 
 Repository containing the tools used in the article 
 
-Optimized harvesting and usage of FWCI and TPP. Article age- and field-normalized tools to evaluate scientific impact\
+**Automated harvesting and statistics of FWCI and TPP. Article age- and field-normalized tools to evaluate scientific impact and momentum**\
 Edgar D. Zanotto and Vinicius Carvalho\
-Department of Materials Engineering - DEMa\
+Department of Materials Engineering – DEMa\
 Center for Research, Technology and Education in Vitreous Materials\
-Federal University of São Carlos - UFSCar\
+Federal University of São Carlos – UFSCar\
 Sao Carlos, SP, Brazil\
 (dedz@ufscar.br)\
 
@@ -38,11 +38,11 @@ Then, define some settings filling the variables in the code.
   * ordered_by\
       Specifies the sort that the articles data will be collected\
       Each number represents a sort.\
-      1 - All articles\
-      2 - Date(Newest)\
-      3 - Date(Oldest)\
-      4 - Cited by(Highest)\
-      5 - Cited by(Lowest)\
+      1 – All articles\
+      2 – Date(Newest)\
+      3 – Date(Oldest)\
+      4 – Cited by(Highest)\
+      5 – Cited by(Lowest)\
       Sorting the articles by the highest citation number:
       ```
       ordered_by = 3
@@ -81,7 +81,7 @@ Using the script graphics-and-statistics.py we can generate graphics and statist
 The graphic represents the number of articles in an interval which is defined by the user. In the following case, the interval is 0.1 and the attribute is Normalized FWCI.
 ![1](https://user-images.githubusercontent.com/32166287/78833422-3bf95100-79c3-11ea-9730-ab497e3aac2d.png)
 
-Before using the functions, it is necessary specify the csv path with the data. Using the variables file and file2, if there is a second dataset.
+Before using the functions, it is necessary specify the csv path with the data. Using the variables _file_ and _file2_, if there is a second dataset.
 Example:
 ```
 file = '/home/user/FWCI-Scopus-project/author1/123456_1_0_2000_0.csv'
