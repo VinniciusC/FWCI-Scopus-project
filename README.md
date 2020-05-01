@@ -8,7 +8,7 @@ Department of Materials Engineering – DEMa\
 Center for Research, Technology and Education in Vitreous Materials\
 Federal University of São Carlos – UFSCar\
 Sao Carlos, SP, Brazil\
-(dedz@ufscar.br)\
+(dedz@ufscar.br)
 
 
 ## Requirements
