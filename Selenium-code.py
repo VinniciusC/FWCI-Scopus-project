@@ -16,16 +16,16 @@ options.add_argument("--incognito")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
-scopus_id = '7004438181'
-sorted_by = 1
+scopus_id = ''
+sorted_by = ''
 #1 - All articles
 #2 - Date(Newest)
 #3 - Date(Oldest)
 #4 - Cited by(Highest)
 #5 - Cited by(Lowest)
-min_year = 0 #0 to ignore
-max_year = 0 #0 to ignore
-size = 0  #max 200, for sorted_by == 1 or to get the maximum, fill with 0
+min_year =  #0 to ignore
+max_year =  #0 to ignore
+size =   #max 200, for sorted_by == 1 or to get the maximum, fill with 0
 
 cdriver = webdriver.Chrome(options=options, executable_path=r"chromedriver") #needs to specify the webdriver path
 cdriver.implicitly_wait(10)
