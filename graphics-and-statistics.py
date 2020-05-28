@@ -34,8 +34,8 @@ def plot(df, title, x, y,attr):
     #ploting and saving the bar graphic
     plt.bar(articles_count,values,width=count_interval,align='edge')
     plt.title(title)
-    plt.ylabel(x)
-    plt.xlabel(y)
+    plt.ylabel(y)
+    plt.xlabel(x)
     if not os.path.exists(file):
                 os.makedirs(file)
     plt.savefig(file + "/" + title + ".png", format='png')
@@ -51,8 +51,8 @@ def plot2(df1, df2, title, legend1, legend2, x, y, attr):
     val2 = dist2.values()
     plt.bar(count1,val1, label = legend1,width=count_interval, color = 'gray',align='edge')
     plt.title(title)
-    plt.ylabel(x)
-    plt.xlabel(y)
+    plt.ylabel(y)
+    plt.xlabel(x)
     plt.bar(count2,val2,zorder=2, label = legend2,width=count_interval, alpha = 0.6, color = 'red',align='edge')
     plt.legend()
     if not os.path.exists(title):
