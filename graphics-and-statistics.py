@@ -29,10 +29,10 @@ def interval(df,attr):
 
 def plot(df, title, x, y,attr):
     dist = interval(df,attr)
-    articles_count = dist.keys()
-    values = dist.values()
+    values = dist.keys()
+    articles_count = dist.values()
     #ploting and saving the bar graphic
-    plt.bar(articles_count,values,width=count_interval,align='edge')
+    plt.bar(values,articles_count,width=count_interval,align='edge')
     plt.title(title)
     plt.ylabel(y)
     plt.xlabel(x)
@@ -45,15 +45,15 @@ def plot(df, title, x, y,attr):
 def plot2(df1, df2, title, legend1, legend2, x, y, attr):
     dist1 = interval(df1,attr)
     dist2 = interval(df2,attr)
-    count1 = dist1.keys()
-    val1 = dist1.values()
-    count2 = dist2.keys()
-    val2 = dist2.values()
-    plt.bar(count1,val1, label = legend1,width=count_interval, color = 'gray',align='edge')
+    val1 = dist1.keys()
+    count1 = dist1.values()
+    val2 = dist2.keys()
+    count2 = dist2.values()
+    plt.bar(val1,count1, label = legend1,width=count_interval, color = 'gray',align='edge')
     plt.title(title)
     plt.ylabel(y)
     plt.xlabel(x)
-    plt.bar(count2,val2,zorder=2, label = legend2,width=count_interval, alpha = 0.6, color = 'red',align='edge')
+    plt.bar(val2,count2,zorder=2, label = legend2,width=count_interval, alpha = 0.6, color = 'red',align='edge')
     plt.legend()
     if not os.path.exists(title):
                 os.makedirs(title)
