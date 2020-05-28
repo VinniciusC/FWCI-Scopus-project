@@ -95,10 +95,10 @@ To use the functions, you will need to edit the file running them with the param
 
 * Graphic with one dataset\
       Function: plot\
-      plot(df, title, y,attr)
+      plot(df, title, x,attr)
   * df : The desired dataset. Use df for file and df2 for file2
   * title: The title that will be written on the top of the graphic and the name of the file.
-  * y: Name of Y axis
+  * x: Name of X axis
   * attr: Choosen attribute to plot, that could be FWCI, authors_count and Prominence percentile
   
       Example:
@@ -109,13 +109,13 @@ To use the functions, you will need to edit the file running them with the param
            ![1](https://user-images.githubusercontent.com/32166287/78833422-3bf95100-79c3-11ea-9730-ab497e3aac2d.png)\
  * Graphic with two datasets\
       Function: plot2\
-      plot2(df1, df2, title, legend1, legend2, y, attr)
+      plot2(df1, df2, title, legend1, legend2, x, attr)
    * df1 : The desired dataset. Use df for file and df2 for file2
    * df2 : The desired dataset. Use df for file and df2 for file2
    * title: The title that will be written on the top of the graphic and the name of the file.
    * legend1: The legend describing the data at dataset 1
    * legend2: The legend describing the data at dataset 2
-   * y: Name of Y axis
+   * x: Name of X axis
    * attr: Choosen attribute to plot, that could be FWCI, authors_count and Prominence percentile\
         Example:
         ```
