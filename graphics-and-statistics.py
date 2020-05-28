@@ -27,7 +27,8 @@ def interval(df,attr):
             count+=1
     return dist
 
-def plot(df, title, x, y,attr):
+def plot(df, title, x, attr):
+    y = 'Number of articles'
     dist = interval(df,attr)
     values = dist.keys()
     articles_count = dist.values()
@@ -42,7 +43,8 @@ def plot(df, title, x, y,attr):
     plt.show()
 
 #Plot 2 datasets in a single graphic
-def plot2(df1, df2, title, legend1, legend2, x, y, attr):
+def plot2(df1, df2, title, legend1, legend2, x, attr):
+    y = 'Number of articles'
     dist1 = interval(df1,attr)
     dist2 = interval(df2,attr)
     val1 = dist1.keys()
