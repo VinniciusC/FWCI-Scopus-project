@@ -57,7 +57,7 @@ Then, define some settings filling the variables in the code.
       ```
    * Size\
       Number of articles to be collected.
-      If you choose all articles in sorted_by, fill with 0 and to the other options the maximum value is 200.
+      If you choose all articles in sorted_by, fill with 0.\
       To collect 50 articles: 
       ```
       size = 50
@@ -68,8 +68,8 @@ python Selenium-code.py
 ```
 The browser will open and run all the process automatically. \
 In the end, the collected data will be written in a CSV file with the following columns and attributes:
-| Article_name | FWCI | year | authors_count | Prominence percentile | Topics | Anchors |
-|--------------|------|------|---------------|-----------------------|--------|---------|
+| Article_name | FWCI | Year |Journal info | authors_count | Prominence percentile | Topics | Anchors |
+|--------------|------|------|-------------|---------------|-----------------------|--------|---------|
 
 The file will be saved in the author folder and the name defined by the previously filled variables\
 scopus_id_sorted_by_size_min_year_max_year.csv\
