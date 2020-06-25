@@ -82,14 +82,12 @@ for article in articles_data.itertuples():
     elif(max_year == 0):
         if(article.Year<min_year):
             if(sorted_by == 2):
-                print('kkkkk')
                 break
             else:
                 continue
     elif(min_year == 0):
         if(article.Year>max_year):
             if(sorted_by == 3):
-                print('rs')
                 break
             else:
                 continue
