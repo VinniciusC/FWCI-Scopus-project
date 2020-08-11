@@ -71,6 +71,7 @@ export_btn = cdriver.find_element_by_id('exportTrigger')
 cdriver.execute_script("arguments[0].click();", export_btn)
 time.sleep(3)
 articles_data = pd.read_csv('scopus.csv')
+os.remove('scopus.csv')
 
 count = 0
 for article in articles_data.itertuples():
@@ -133,7 +134,7 @@ for article in articles_data.itertuples():
         if (cdriver.current_url=='https://www.scopus.com/error.uri'):
             articles_data.append(article)
         continue
-os.remove('scopus.csv')
+
 #Writing in csv
 with open(author+"\\" + scopus_id +"_"+ str(sorted_by) +"_"+ str(size) +"_"+ str(min_year) +"_"+ str(max_year)+".csv", "w", encoding="utf-8",newline='') as f:
     c = csv.writer(f)
