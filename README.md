@@ -35,9 +35,9 @@ Then download the WebDriver according with your chrome version accessing <https:
 
 ## Executing the software
 * Windows version\
-      Run FWCI_Stats.exe in the following path: Windows/FWCI_Stats/
+      Run FWCI_Stats.exe
 * Linux version\
-      Run Selenium-code.py in the following path: Code/
+      Run python Selenium-code.py 
 
 ## Collecting the data
 Click *Collect data* in first menu and fill all the fields 
@@ -69,7 +69,7 @@ Click *Collect data* in first menu and fill all the fields
 
 The browser will open and run all the process automatically. \
 Do not close until *CSV written with sucess* message appear.\
-Each article collected will bem shown.\
+Each article collected will be shown.\
 In the end, the collected data will be written in a CSV file with the following columns and attributes:
 | Article_name | FWCI | Year |Journal info | authors_count | Prominence percentile | Topics | Anchors |
 |--------------|------|------|-------------|---------------|-----------------------|--------|---------|
