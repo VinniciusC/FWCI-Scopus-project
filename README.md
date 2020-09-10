@@ -10,164 +10,116 @@ Federal University of São Carlos – UFSCar\
 Sao Carlos, SP, Brazil\
 (dedz@ufscar.br)
 
+## Executable for windows
+* Windows:
+<https://www.dropbox.com/s/7427jjxits5spe1/FWCI_Stats_Win.rar?dl=0>
 
-## Requirements
-* Python 3
-* Selenium 
-* Pandas
-* Numpy
-* Matplotlib
-* Scipy
+## Requirements Windows
+* Windows 7 32bits or higher
 * Full access to the Scopus database
+* Chrome WebDriver
 
+## Requirements Linux
+* selenium==3.141.0
+* matplotlib==3.3.0
+* numpy==1.19.1
+* pandas==1.1.0
+* PySimpleGUI==4.26.0
+* scipy==1.5.2
+* Full access to the Scopus database
+* Chrome WebDriver
+
+## Chrome WebDriver download
+Before, check your Chrome Version acessing <chrome://settings/help> \
+Then download the WebDriver according with your chrome version accessing <https://chromedriver.chromium.org/downloads>
+
+## Executing the software
+* Windows version\
+      Run FWCI_Stats.exe in the following path: Windows/FWCI_Stats/
+* Linux version\
+      Run Selenium-code.py in the following path: Code/
 
 ## Collecting the data
-Selenium-code.py is the script responsible to collect data* at Scopus.
-*data = FWCI, TPP, publication year and number of authors of each article
+Click *Collect data* in first menu and fill all the fields 
 
-To get started, it is necessary download chrome webdriver according with your google chrome version and save at scripts folder.\
-Download here: https://chromedriver.chromium.org/downloads \
-Then, define some settings filling the variables in the code.
-
- * scopus_ID\
-      Author's ID that can be found in author's page at Scopus\
-      Choosing the author number 123456789:
-      ```
-      scopus_id = '123456789'
-      ```
-  * ordered_by\
-      Specifies the sort that the articles data will be collected\
-      Each number represents a sort.\
-      1 – All articles\
-      2 – Date(Newest)\
-      3 – Date(Oldest)\
-      4 – Cited by(Highest)\
-      5 – Cited by(Lowest)\
-      Sorting the articles by the highest citation number:
-      ```
-      ordered_by = 3
-      ```
+ * Scopus ID\
+      Author's ID that can be found in author's page at Scopus
+      
+  * Sort by\
+      Specifies the sort that the articles data will be collected
+      
+  * Chrome WebDriver \
+      Click in browse and select the Chrome WebDriver previously downloaded.\
+      It is possible to save the path selecting the item below. 
+      
+  Click Next.\
+  If you choose a sort different from All articles, it will be necessary to fill the following items:
+  
   * Minimum and maximum years\
       To choose the minimum and maximum year of a publication\
-      Fill with 0 to ignore\
-      To collect articles published at least in 2000: 
-      ```
-      min_year = 2000  
-      max_year = 0
-      ```
+      Fill with 0 to ignore
+
    * Size\
-      Number of articles to be collected.
-      If you choose all articles in sorted_by, fill with 0 and to the other options the maximum value is 200.
-      To collect 50 articles: 
-      ```
-      size = 50
-      ```
-After filling all the variables, it is just necessary run the script:
-```
-python Selenium-code.py
-```
+      Number of articles to be collected.\
+      Fill with 0 to collect all
+ 
+ Click Next.\
+ Click Run.
+ 
+
 The browser will open and run all the process automatically. \
+Do not close until *CSV written with sucess* message appear.\
+Each article collected will bem shown.\
 In the end, the collected data will be written in a CSV file with the following columns and attributes:
-| Article_name | FWCI | year | authors_count | Prominence percentile | Topics | Anchors |
-|--------------|------|------|---------------|-----------------------|--------|---------|
+| Article_name | FWCI | Year |Journal info | authors_count | Prominence percentile | Topics | Anchors |
+|--------------|------|------|-------------|---------------|-----------------------|--------|---------|
 
 The file will be saved in the author folder and the name defined by the previously filled variables\
-scopus_id_sorted_by_size_min_year_max_year.csv\
-After writing the csv, a message of success will be shown.\
+sorted_by_size_min_year_max_year.csv\
 Observation: sometimes it is necessary to re-execute the code again because of random popups and attributes that have not been loaded correctly by the website. We are working in a solution, feel free to contribute.
 
 ## Generating graphics and statistics
-Using the script graphics-and-statistics.py we can generate graphics and statistics about the previously collected data.
+Selecting *Generate graphics and statistics* we can generate graphics and statistics about the previously collected data.
 The graphic represents the number of articles in an interval which is defined by the user. In the following case, the interval is 0.1 and the attribute is Normalized FWCI.
 ![1](https://user-images.githubusercontent.com/32166287/78833422-3bf95100-79c3-11ea-9730-ab497e3aac2d.png)
 
-Before using the functions, it is necessary specify the csv path with the data. Using the variables _file_ and _file2_, if there is a second dataset.
-Example:
-```
-file = '/home/user/FWCI-Scopus-project/author1/123456_1_0_2000_0.csv'
-```
-Then, you need to define an interval according with your preferences or data scale. The variable is count_interval, localized in the first lines.\
-Defining a 0.5 interval:
-```
-count_interval = 0.5
-```
-To use the functions, you will need to edit the file running them with the parameters.
-
-* Graphic with one dataset\
-      Function: plot\
-      plot(df, title, x,attr)
-  * df : The desired dataset. Use df for file and df2 for file2
-  * title: The title that will be written on the top of the graphic and the name of the file.
-  * x: Name of X axis
-  * attr: Choosen attribute to plot, that could be FWCI, authors_count and Prominence percentile
-  
-      Example:
-     ```
-     plot(df,'Articles count X FWCI', 'Normalized FWCI','FWCI')
-     ```
-       The png plot is saved in a folder named by the title inside the dataset csv folder.\
+* Plot one dataset
+  * CSV Dataset : The desired dataset. You can choose clicking in browser.
+  * Count interval: Define an interval according with your preferences or data scale.
+  * Title: The title that will be written on the top of the graphic and the name of the file.
+  * Attribute: Choosen attribute to plot, that could be FWCI, authors_count and Prominence percentile
+  * Divide the attribute by number of authors: Select to divide the choosen atribute of each article by its number of authors.
+  * Top highest attribute: If you are looking for the highests fill this field, if not, fill with 0. 
+ 
+       To save in your device, click in the save button and choose a folder.\
+       Result example: \
            ![1](https://user-images.githubusercontent.com/32166287/78833422-3bf95100-79c3-11ea-9730-ab497e3aac2d.png)\
- * Graphic with two datasets\
-      Function: plot2\
-      plot2(df1, df2, title, legend1, legend2, x, attr)
-   * df1 : The desired dataset. Use df for file and df2 for file2
-   * df2 : The desired dataset. Use df for file and df2 for file2
-   * title: The title that will be written on the top of the graphic and the name of the file.
-   * legend1: The legend describing the data at dataset 1
-   * legend2: The legend describing the data at dataset 2
-   * x: Name of X axis
-   * attr: Choosen attribute to plot, that could be FWCI, authors_count and Prominence percentile\
-        Example:
-        ```
-         plot(df,df2,'20 newest and 20 oldest. Article count x FWCI','Oldest','Newest','FWCI value','FWCI')
-        ```
-        
-       The png plot will be saved in a folder named by the title inside the code main folder.\
-       ![2](https://user-images.githubusercontent.com/32166287/78835128-06099c00-79c6-11ea-837b-704d9f7675a3.png)
            
-  * Dividing an attribute per co-authors number\
-      Function: divide_coauthors\
-      divide_coauthors(df,attr)
-    * df : The desired dataset. Use df for file and df2 for file2
-    * attr: Choosen attribute to divide, that could be FWCI and Prominence percentile\
-    Example:
-    ```
-    new_dataset = divide_coauthors(df,'FWCI')
-    ```
-    This function is not inplace, returns a new dataset without change the original.
+ * Plot two datasets
+   * CSV Dataset 1 and 2: The first and second desired dataset. You can choose clicking in browser.
+   * Count interval: Define an interval according with your preferences or data scale.
+   * Title: The title that will be written on the top of the graphic and the name of the file.
+   * Label dataset 1 or 2: text to the graphic legend of each dataset
+   * Attribute: Choosen attribute to plot, that could be FWCI, authors_count and Prominence percentile
+   * Divide the attribute by number of authors: Select to divide the choosen atribute of each article by its number of authors.
+   * Top highest attribute: If you are looking for the highests fill this field, if not, fill with 0. 
+ 
+       To save in your device, click in the save button and choose a folder.\
+       Result example: \
+       ![2](https://user-images.githubusercontent.com/32166287/78835128-06099c00-79c6-11ea-837b-704d9f7675a3.png)
       
-  * Co-author statistics\
-      Function: statistics_coauthors\
-      This function prints the mean, mode and median of co-authors number\
-      statistics_coauthors(df)
-    *  df : The desired dataset. Use df for file and df2 for file2
+  * Attribute statistics\
+      This function prints the sum, mean, mode,standard deviation and median of a choosen attribute\
+     * CSV Dataset : The desired dataset.
+     * Attribute: Choosen attribute to calculate the statistics, that could be FWCI, Prominence percentile or authors count\
             
-   * Attribute statistics\
-      Function: statistics_attribute\
-      This function prints the sum, mean, mode, median and standard deviation of co-authors number\
-      statistics_attribute(df, attr):
-     * df : The desired dataset. Use df for file and df2 for file2
-     * attr: Choosen attribute to calculate the statistics, that could be FWCI and Prominence percentile\
-            
-   * Top 20 Highest of an attribute\
-      Function: statistics_attribute\The png plot will be saved in file folder, being named as scatter co-authors X FWCI.png
-      This function returns a dataset containing just the top 20 of a choosen attribute.\
-      twenty_highest_att(df,attr):
-     * df : The desired dataset. Use df for file and df2 for file2
-     * attr: Choosen attribute to calculate the top 20, that could be FWCI, authors_count and Prominence percentile\
-      Example:
-      ```
-      top_fwci = twenty_highest_att(df,'FWCI')
-      ```
-      This function is not inplace, returns a new dataset without change the original.
       
-   * Scatter graphic Co-authors count X FWCI\
-       Function: scatter_coauthorsxfwci\
-       This function plot a scatter graphic to compare the number of co-authors with the FWCI in each article.\
-       scatter_coauthorsxfwci(df):
-     * df : The desired dataset. Use df for file and df2 for file2
+   * Scatter Authors X FWCI\
+       This function plot a scatter graphic to compare the number of authors with the FWCI in each article.\
+     * CSV Dataset : The desired dataset.
        
-       The png plot will be saved in file folder, being named as scatter co-authors X FWCI.png\
+       To save in your device, click in the save button and choose a folder.\
+       Result example: \
        ![1 (1)](https://user-images.githubusercontent.com/32166287/78920771-4a4e7800-7a6a-11ea-898c-069988fa2a81.png)
 
        

@@ -5,15 +5,8 @@ import matplotlib.pyplot as plt
 from scipy import stats as s
 import os
 
-plt.rcParams['figure.figsize'] = (11,7)
-plt.rcParams['xtick.labelsize'] = 16
-plt.rcParams['ytick.labelsize'] = 16
-plt.rcParams['axes.labelsize'] = 18
-plt.rcParams['axes.titlesize'] = 16
 
-count_interval =
-
-def interval(df,attr):
+def interval(df,attr,count_interval):
     fwcis = df[attr].values.copy()
     fwcis.sort()
     count = 0
@@ -27,9 +20,18 @@ def interval(df,attr):
             count+=1
     return dist
 
-def plot(df, title, x, attr):
+def plot(title,count_interval,attr,file,normalize,highest):
+    df = pd.read_csv(file)
+    if normalize:
+        df = divide_coauthors(file,attr)
+        x = 'Normalized ' + attr
+    else:
+        x = attr
+    if highest != 0:
+        df = highest_att(file,highest,attr)
     y = 'Number of articles'
-    dist = interval(df,attr)
+    print(df)
+    dist = interval(df,attr,count_interval)
     values = dist.keys()
     articles_count = dist.values()
     #ploting and saving the bar graphic
@@ -37,66 +39,66 @@ def plot(df, title, x, attr):
     plt.title(title)
     plt.ylabel(y)
     plt.xlabel(x)
-    if not os.path.exists(file):
-                os.makedirs(file)
-    plt.savefig(file + "/" + title + ".png", format='png')
     plt.show()
 
 #Plot 2 datasets in a single graphic
-def plot2(df1, df2, title, legend1, legend2, x, attr):
+def plot2(title, label1, label2,count_interval,attr,file1,file2,normalize,highest):
+    df1 = pd.read_csv(file1)
+    df2 = pd.read_csv(file2)
+    if normalize:
+        df1 = divide_coauthors(file1,attr)
+        df2 = divide_coauthors(file2,attr)
+        x = 'Normalized ' + attr
+    else:
+        x = attr
+    if highest != 0:
+        df1 = highest_att(file1,highest,attr)
+        df2 = highest_att(file2,highest,attr)
     y = 'Number of articles'
-    dist1 = interval(df1,attr)
-    dist2 = interval(df2,attr)
+    dist1 = interval(df1,attr,count_interval)
+    dist2 = interval(df2,attr,count_interval)
     val1 = dist1.keys()
     count1 = dist1.values()
     val2 = dist2.keys()
     count2 = dist2.values()
-    plt.bar(val1,count1, label = legend1,width=count_interval, color = 'gray',align='edge')
+    plt.bar(val1,count1, label = label1,width=count_interval, color = 'gray',align='edge')
     plt.title(title)
     plt.ylabel(y)
     plt.xlabel(x)
-    plt.bar(val2,count2,zorder=2, label = legend2,width=count_interval, alpha = 0.6, color = 'red',align='edge')
+    plt.bar(val2,count2,zorder=2, label = label2,width=count_interval, alpha = 0.4, color = 'red',align='edge')
     plt.legend()
-    if not os.path.exists(title):
-                os.makedirs(title)
-    plt.savefig(title + "/" + title + ".png", format='png')
     plt.show()
 
-def divide_coauthors(df,attr):
+def divide_coauthors(file,attr):
+    df = pd.read_csv(file)
     divided_df = df.copy()
     for i in range(0,len(df)):
         divided_df.at[i,attr] = round(float(df.at[i,attr])/float(df.at[i,'authors_count']),2)
     return divided_df
+    
 
-def statistics_coauthors(df):
-    print("Co-author mean per article: " + str(round(statistics.mean(df['authors_count']),2)))
-    print("Co-author mode per article: " + str(s.mode(df['authors_count'])))
-    print("Co-author median per article: " + str(statistics.median(df['authors_count'])))
-
-def statistics_attribute(df, attr):
+def statistics_attribute(file,attr):
+    df = pd.read_csv(file)
     print(attr + " sum:"+ str(sum(df[attr])))
     print(attr + " mean: " + str(round(statistics.mean(df[attr]),2)))
-    print(attr + " mode: " + str(s.mode(df[attr])))
+    print(attr + " mode: " + str(s.mode(df[attr]).mode))
     print(attr + " standard deviation:" + str(round(statistics.pstdev(df[attr]),2)))
     print(attr + " median:" + str(round(statistics.median(df[attr]),2)))
+    pass
 
-def twenty_highest_att(df,attr):
+def highest_att(file,size,attr):
+    df = pd.read_csv(file)
     df.sort_values(attr, inplace = True, ascending=False)
     df.reset_index(drop=True, inplace=True)
-    df = df.head(20)
+    df = df.head(size)
     return df
 
-def scatter_coauthorsxfwci(df):
+def scatter_coauthorsxfwci(file):
+    df = pd.read_csv(file)
     plt.scatter(df['authors_count'], df['FWCI'],  c= 'green', alpha=0.5)
     plt.ylabel("FWCI")
     plt.xlabel('Number of authors')
-    if not os.path.exists(file):
-        os.makedirs(file)
-    plt.savefig(file+'/scatter co-authors X FWCI.png', format='png')
     plt.show()
+    pass
 
-file = ''
-file2 = ''
-df = pd.read_csv(file+'.csv')
-if file2 != '':
-    df2 = pd.read_csv(file2+'.csv')
+
